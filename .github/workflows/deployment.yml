@@ -46,5 +46,7 @@ jobs:
         run: |
           docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
           docker push registry.heroku.com/${{env.HEROKU_APP}}/web
+      - name: Release
+        run: heroku container:release web --app ${{env.HEROKU_APP}}
 
 
