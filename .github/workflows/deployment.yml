@@ -43,10 +43,6 @@ jobs:
           docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/simpleapi:latest
           docker tag ${{ secrets.DOCKER_HUB_USERNAME }}/simpleapi:latest registry.heroku.com/${{env.HEROKU_APP}}/web
       - name: Push to heroku registry
-        run: |
-          docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
-          docker push registry.heroku.com/${{env.HEROKU_APP}}/web
-      - name: Release
-        run: heroku container:release web --app ${{env.HEROKU_APP}}
+        run: docker push registry.heroku.com/${{env.HEROKU_APP}}/web
 
 
