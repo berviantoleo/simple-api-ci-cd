@@ -48,5 +48,3 @@ jobs:
           docker push registry.heroku.com/${{env.HEROKU_APP}}/web
       - name: Release
         run: heroku container:release web --app ${{env.HEROKU_APP}}
-
-
